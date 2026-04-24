@@ -1,0 +1,106 @@
+# Jekyll Configuration for HR Platform
+title: HR Platform
+description: Modern HR Management Solution for Growing Companies
+url: "https://guerkankaraduman-prog.github.io"
+baseurl: "/hrplatform"
+
+# Theme & Plugins
+theme: null
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-paginate-v2
+
+# Collections
+collections:
+  - posts
+  - pages
+
+# Pagination
+pagination:
+  enabled: true
+  per_page: 12
+  permalink: '/blog/page/:num/'
+  title: ' | Page :num'
+
+# SASS
+sass:
+  style: compressed
+
+# Markdown
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# Exclude
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - README.md
+  - .gitignore
+
+# Author
+author:
+  name: HR Platform Team
+  email: hello@hrplatform.com
+
+# Social
+social:
+  linkedin: "https://linkedin.com/company/hrplatform"
+  twitter: "https://twitter.com/hrplatform"
+  github: "https://github.com/guerkankaraduman-prog"
+
+# Company Info
+company:
+  name: HR Platform
+  tagline: Modern HR Management Solution
+  phone: "+1 (555) 123-4567"
+  email: "support@hrplatform.com"
+  address: "San Francisco, CA, USA"
+  founded: 2024
+
+# Features
+features:
+  - title: "Employee Management"
+    description: "Centralized employee database with all information at your fingertips"
+    icon: "👥"
+  - title: "Time & Attendance"
+    description: "Track work hours, absences, and manage schedules effortlessly"
+    icon: "⏰"
+  - title: "Leave Management"
+    description: "Streamline vacation and leave requests with automated approvals"
+    icon: "📅"
+  - title: "Payroll Integration"
+    description: "Seamless integration with payroll systems for accurate compensation"
+    icon: "💰"
+  - title: "Performance Reviews"
+    description: "Conduct 360-degree reviews and track employee development"
+    icon: "⭐"
+  - title: "Analytics & Insights"
+    description: "Data-driven HR decisions with comprehensive reporting tools"
+    icon: "📊"
+
+# Testimonials
+testimonials:
+  - name: "Sarah Johnson"
+    role: "HR Manager, TechCorp"
+    company: "TechCorp Inc."
+    text: "HR Platform transformed how we manage our 500+ employees. Absolutely game-changing!"
+    rating: 5
+    image: "https://i.pravatar.cc/150?img=1"
+  - name: "Michael Chen"
+    role: "CEO, StartupXYZ"
+    company: "StartupXYZ"
+    text: "Best HR solution for scaling companies. Highly recommend!"
+    rating: 5
+    image: "https://i.pravatar.cc/150?img=2"
+  - name: "Emma Rodriguez"
+    role: "HR Director, GlobalCorp"
+    company: "GlobalCorp"
+    text: "The analytics features alone saved us countless hours. Incredible platform!"
+    rating: 5
+    image: "https://i.pravatar.cc/150?img=3"
