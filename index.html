@@ -32,11 +32,12 @@ overflow-x: hidden;
 
 /* ── NAV ── */
 nav {
-position: fixed; top: 0; width: 100%; z-index: 100; display: flex; align-items: center; justify-content: center;
+position: fixed; top: 0; width: 100%; z-index: 100; 
+display: flex; align-items: center; justify-content: center; gap: 2rem;
 padding: 1.2rem 5%;
 background: rgba(10,10,15,0.85);
 backdrop-filter: blur(20px);
-border-bottom: 1px solid var(–border);
+border-bottom: 1px solid var(--border);
 }
 
 .logo {
@@ -46,7 +47,7 @@ background: linear-gradient(135deg, var(–accent), var(–accent2));
 -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
 
-.nav-links { display: flex; align-items: center; justify-content: center; gap: 2.5rem; list-style: none; }
+.nav-links { display: flex; align-items: center; justify-content: center; gap: 2rem; list-style: none; }
 .nav-links a { color: var(–muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
 .nav-links a:hover { color: var(–text); }
 
