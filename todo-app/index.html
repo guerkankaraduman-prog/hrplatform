@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional To-Do List App with Local Storage">
+    <meta name="theme-color" content="#0066ff">
+    <title>To-Do List App - Manage Your Tasks</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <div class="logo-section">
+                    <h1>📋 TaskMaster</h1>
+                    <p class="tagline">Your Personal Task Manager</p>
+                </div>
+                <div class="header-controls">
+                    <button id="theme-toggle" class="btn-icon" title="Toggle Dark Mode">
+                        <span class="theme-icon">🌙</span>
+                    </button>
+                    <button id="export-btn" class="btn-icon" title="Export Tasks">
+                        <span>⬇️</span>
+                    </button>
+                    <button id="clear-all-btn" class="btn-icon" title="Clear Completed">
+                        <span>🗑️</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="app-main">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="filter-section">
+                    <h3>Filters</h3>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">All Tasks</button>
+                        <button class="filter-btn" data-filter="active">Active</button>
+                        <button class="filter-btn" data-filter="completed">Completed</button>
+                    </div>
+                </div>
+
+                <div class="priority-section">
+                    <h3>By Priority</h3>
+                    <div class="priority-buttons">
+                        <button class="priority-btn" data-priority="high">
+                            <span class="priority-dot high"></span> High
+                        </button>
+                        <button class="priority-btn" data-priority="medium">
+                            <span class="priority-dot medium"></span> Medium
+                        </button>
+                        <button class="priority-btn" data-priority="low">
+                            <span class="priority-dot low"></span> Low
+                        </button>
+                    </div>
+                </div>
+
+                <div class="stats-section">
+                    <h3>Statistics</h3>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <span class="stat-label">Total</span>
+                            <span class="stat-value" id="total-tasks">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Active</span>
+                            <span class="stat-value" id="active-tasks">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Completed</span>
+                            <span class="stat-value" id="completed-tasks">0</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content Area -->
+            <section class="content-area">
+                <!-- Input Section -->
+                <div class="input-section">
+                    <form id="task-form" class="task-input-form">
+                        <div class="input-group">
+                            <input 
+                                type="text" 
+                                id="task-input" 
+                                placeholder="Add a new task..." 
+                                class="task-input" 
+                                required
+                            >
+                            <button type="submit" class="btn-add">Add Task</button>
+                        </div>
+                        <div class="task-options">
+                            <select id="priority-select" class="priority-select">
+                                <option value="low">🟢 Low Priority</option>
+                                <option value="medium" selected>🟡 Medium Priority</option>
+                                <option value="high">🔴 High Priority</option>
+                            </select>
+                            <input type="date" id="due-date-input" class="due-date-input">
+                            <input type="text" id="category-input" placeholder="Category (optional)" class="category-input">
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Search Section -->
+                <div class="search-section">
+                    <input 
+                        type="text" 
+                        id="search-input" 
+                        placeholder="🔍 Search tasks..." 
+                        class="search-input"
+                    >
+                    <button id="sort-btn" class="btn-sort">Sort: Date ↓</button>
+                </div>
+
+                <!-- Tasks List -->
+                <div class="tasks-container">
+                    <div id="tasks-list" class="tasks-list">
+                        <!-- Tasks will be rendered here -->
+                    </div>
+                    <div id="empty-state" class="empty-state">
+                        <p>🎉 No tasks yet. Start by adding one!</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal for Editing Task -->
+    <div id="edit-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Task</h2>
+                <button type="button" class="modal-close">&times;</button>
+            </div>
+            <form id="edit-form" class="modal-form">
+                <div class="form-group">
+                    <label for="edit-task-input">Task Title</label>
+                    <input type="text" id="edit-task-input" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="edit-priority">Priority</label>
+                        <select id="edit-priority">
+                            <option value="low">Low</option>
+                            <option value="medium">Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-due-date">Due Date</label>
+                        <input type="date" id="edit-due-date">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="edit-category">Category</label>
+                    <input type="text" id="edit-category">
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-cancel">Cancel</button>
+                    <button type="submit" class="btn-save">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js').catch(() => {});
+        }
+    </script>
+</body>
+</html>
