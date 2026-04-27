@@ -24,9 +24,9 @@
 html { scroll-behavior: smooth; }
 
 body {
-font-family: ‘DM Sans’, sans-serif;
-background: var(–bg);
-color: var(–text);
+font-family: 'DM Sans', sans-serif;
+background: var(--bg);
+color: var(--text);
 overflow-x: hidden;
 }
 
@@ -41,7 +41,7 @@ border-bottom: 1px solid var(–border);
 }
 
 .logo {
-font-family: ‘Syne’, sans-serif;
+font-family: 'Syne', sans-serif;
 font-weight: 800; font-size: 1.5rem;
 background: linear-gradient(135deg, var(–accent), var(–accent2));
 -webkit-background-clip: text; -webkit-text-fill-color: transparent;
@@ -54,7 +54,7 @@ background: linear-gradient(135deg, var(–accent), var(–accent2));
 .nav-cta {
 background: var(–accent); color: #fff;
 border: none; padding: 0.65rem 1.5rem;
-border-radius: 50px; font-family: ‘DM Sans’, sans-serif;
+border-radius: 50px; font-family: 'DM Sans', sans-serif;
 font-weight: 500; cursor: pointer; font-size: 0.9rem;
 transition: all 0.2s;
 }
@@ -71,7 +71,7 @@ position: relative; overflow: hidden;
 }
 
 .hero::before {
-content: ‘’;
+content: '';
 position: absolute; inset: 0;
 background:
 radial-gradient(ellipse 80% 60% at 50% 0%, rgba(108,99,255,0.15) 0%, transparent 70%),
@@ -94,7 +94,7 @@ animation: fadeUp 0.6s ease both;
 @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
 
 .hero h1 {
-font-family: ‘Syne’, sans-serif;
+font-family: 'Syne', sans-serif;
 font-size: clamp(2.8rem, 7vw, 5.5rem);
 font-weight: 800; line-height: 1.05;
 margin-bottom: 1.5rem;
@@ -122,7 +122,7 @@ animation: fadeUp 0.6s 0.3s ease both;
 background: linear-gradient(135deg, var(–accent), #8b84ff);
 color: #fff; border: none; padding: 0.9rem 2rem;
 border-radius: 50px; font-size: 1rem; font-weight: 500;
-cursor: pointer; font-family: ‘DM Sans’, sans-serif;
+cursor: pointer; font-family: 'DM Sans', sans-serif;
 transition: all 0.2s; box-shadow: 0 8px 30px rgba(108,99,255,0.3);
 }
 .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(108,99,255,0.4); }
@@ -131,7 +131,7 @@ transition: all 0.2s; box-shadow: 0 8px 30px rgba(108,99,255,0.3);
 background: transparent; color: var(–text);
 border: 1px solid var(–border); padding: 0.9rem 2rem;
 border-radius: 50px; font-size: 1rem; font-weight: 500;
-cursor: pointer; font-family: ‘DM Sans’, sans-serif;
+cursor: pointer; font-family: 'DM Sans', sans-serif;
 transition: all 0.2s;
 }
 .btn-secondary:hover { border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.05); }
@@ -142,7 +142,7 @@ animation: fadeUp 0.6s 0.4s ease both;
 }
 
 .stat { text-align: center; }
-.stat-num { font-family: ‘Syne’, sans-serif; font-size: 2rem; font-weight: 800; color: var(–text); }
+.stat-num { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; color: var(–text); }
 .stat-label { font-size: 0.8rem; color: var(–muted); margin-top: 0.2rem; }
 
 /* ── DASHBOARD MOCKUP ── */
@@ -189,7 +189,7 @@ flex-shrink: 0;
 }
 
 .dash-logo {
-font-family: ‘Syne’, sans-serif; font-weight: 800;
+font-family: 'Syne', sans-serif; font-weight: 800;
 font-size: 1rem; padding: 0 1.5rem 1.5rem;
 background: linear-gradient(135deg, var(–accent), var(–accent2));
 -webkit-background-clip: text; -webkit-text-fill-color: transparent;
@@ -207,7 +207,7 @@ cursor: pointer; transition: all 0.15s;
 
 .dash-main { flex: 1; padding: 1.5rem; overflow: hidden; }
 
-.dash-title { font-family: ‘Syne’, sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 1rem; }
+.dash-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 1rem; }
 
 .dash-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem; margin-bottom: 1.2rem; }
 
@@ -217,7 +217,7 @@ border-radius: 12px; padding: 1rem;
 }
 
 .dash-card-label { font-size: 0.7rem; color: var(–muted); margin-bottom: 0.3rem; }
-.dash-card-val { font-family: ‘Syne’, sans-serif; font-weight: 700; font-size: 1.4rem; }
+.dash-card-val { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.4rem; }
 .dash-card-val.green { color: var(–accent3); }
 .dash-card-val.purple { color: var(–accent); }
 .dash-card-val.pink { color: var(–accent2); }
@@ -253,7 +253,7 @@ margin-bottom: 1rem;
 }
 
 .section-title {
-font-family: ‘Syne’, sans-serif; font-weight: 800;
+font-family: 'Syne', sans-serif; font-weight: 800;
 font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1;
 margin-bottom: 1rem;
 }
@@ -274,7 +274,7 @@ position: relative; overflow: hidden;
 }
 
 .feature-card::before {
-content: ‘’; position: absolute;
+content: ''; position: absolute;
 top: 0; left: 0; right: 0; height: 1px;
 background: linear-gradient(90deg, transparent, var(–accent), transparent);
 opacity: 0; transition: opacity 0.3s;
@@ -296,7 +296,7 @@ font-size: 1.4rem; margin-bottom: 1.2rem;
 .icon-blue { background: rgba(64,154,255,0.15); }
 .icon-orange { background: rgba(255,140,66,0.15); }
 
-.feature-title { font-family: ‘Syne’, sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 0.7rem; }
+.feature-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 0.7rem; }
 .feature-desc { color: var(–muted); font-size: 0.9rem; line-height: 1.7; }
 
 /* ── HOW IT WORKS ── */
@@ -320,12 +320,12 @@ transition: all 0.3s;
 .step:hover { border-color: rgba(108,99,255,0.3); }
 
 .step-num {
-font-family: ‘Syne’, sans-serif; font-weight: 800;
+font-family: 'Syne', sans-serif; font-weight: 800;
 font-size: 2.5rem; color: rgba(108,99,255,0.3);
 flex-shrink: 0; line-height: 1;
 }
 
-.step-content h3 { font-family: ‘Syne’, sans-serif; font-weight: 700; font-size: 1.15rem; margin-bottom: 0.5rem; }
+.step-content h3 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.15rem; margin-bottom: 0.5rem; }
 .step-content p { color: var(–muted); line-height: 1.7; font-size: 0.95rem; }
 
 /* ── PRICING ── */
@@ -355,8 +355,8 @@ font-size: 0.7rem; font-weight: 600; padding: 0.3rem 1rem;
 border-radius: 50px; letter-spacing: 0.05em; text-transform: uppercase;
 }
 
-.plan-name { font-family: ‘Syne’, sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem; }
-.plan-price { font-family: ‘Syne’, sans-serif; font-weight: 800; font-size: 2.8rem; margin: 1rem 0 0.3rem; }
+.plan-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem; }
+.plan-price { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 2.8rem; margin: 1rem 0 0.3rem; }
 .plan-price span { font-size: 1rem; font-weight: 400; color: var(–muted); }
 .plan-desc { color: var(–muted); font-size: 0.85rem; margin-bottom: 1.5rem; }
 
@@ -367,11 +367,11 @@ display: flex; align-items: center; gap: 0.7rem;
 border-bottom: 1px solid var(–border);
 }
 .plan-features li:last-child { border-bottom: none; }
-.plan-features li::before { content: ‘✓’; color: var(–accent3); font-weight: 700; flex-shrink: 0; }
+.plan-features li::before { content: '✓'; color: var(–accent3); font-weight: 700; flex-shrink: 0; }
 
 .btn-plan {
 width: 100%; padding: 0.9rem; border-radius: 50px;
-font-family: ‘DM Sans’, sans-serif; font-size: 0.95rem; font-weight: 500;
+font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 500;
 cursor: pointer; transition: all 0.2s;
 }
 .btn-plan-outline { background: transparent; border: 1px solid var(–border); color: var(–text); }
@@ -416,13 +416,13 @@ position: relative; overflow: hidden;
 }
 
 .cta-section::before {
-content: ‘’; position: absolute; inset: 0;
+content: ''; position: absolute; inset: 0;
 background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(108,99,255,0.12), transparent 70%);
 pointer-events: none;
 }
 
 .cta-section h2 {
-font-family: ‘Syne’, sans-serif; font-weight: 800;
+font-family: 'Syne', sans-serif; font-weight: 800;
 font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.1;
 margin-bottom: 1.5rem;
 }
@@ -438,7 +438,7 @@ flex-wrap: wrap; gap: 1rem;
 }
 
 .footer-logo {
-font-family: ‘Syne’, sans-serif; font-weight: 800;
+font-family: 'Syne', sans-serif; font-weight: 800;
 background: linear-gradient(135deg, var(–accent), var(–accent2));
 -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
