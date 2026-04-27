@@ -23,14 +23,511 @@
 
 html { scroll-behavior: smooth; }
 
-body {<header class="header">
-    <img src="https://raw.github.com/guerkankaraduman-prog/hrplatform/main/logo001.png" alt="logo001" class="logo001">
-font-family: 'DM Sans', sans-serif;
-background: var(--bg);
-      
-color: var(--text);
-overflow-x: hidden;
+<nav id="navbar">
+  <!-- Logo -->
+  <a href="#" class="nav-logo">
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+      <circle cx="16" cy="16" r="16" fill="url(#logoGrad)"/>
+      <path d="M10 8h7a6 6 0 0 1 0 12h-4v6h-3V8z" fill="white"/>
+      <circle cx="23" cy="10" r="2.5" fill="rgba(255,255,255,0.6)"/>
+      <defs>
+        <linearGradient id="logoGrad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#A855F7"/>
+          <stop offset="1" stop-color="#3B82F6"/>
+        </linearGradient>
+      </defs>
+    </svg>
+    <span>Pelio<span class="dot">.</span></span>
+  </a>
+
+  <!-- Hamburger (Mobile) -->
+
+  <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen">
+    <span></span><span></span><span></span>
+  </button>
+
+  <!-- Nav Links -->
+
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#features">Funktionen</a></li>
+
+```
+<!-- Dropdown: Lösungen -->
+<li class="nav-dropdown">
+  <a href="#" class="dropdown-trigger">
+    Lösungen
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+      <path d="M2 4l4 4 4-4"/>
+    </svg>
+  </a>
+  <div class="dropdown-menu">
+    <a href="#" class="dropdown-item">
+      <span class="dropdown-icon">🏢</span>
+      <div>
+        <strong>Für KMU</strong>
+        <small>10–250 Mitarbeiter</small>
+      </div>
+    </a>
+    <a href="#" class="dropdown-item">
+      <span class="dropdown-icon">🚀</span>
+      <div>
+        <strong>Für Startups</strong>
+        <small>Schnell skalieren</small>
+      </div>
+    </a>
+    <a href="#" class="dropdown-item">
+      <span class="dropdown-icon">🏗️</span>
+      <div>
+        <strong>Für Konzerne</strong>
+        <small>Enterprise-Lösung</small>
+      </div>
+    </a>
+    <div class="dropdown-divider"></div>
+    <a href="#" class="dropdown-item dropdown-cta">
+      Alle Lösungen ansehen →
+    </a>
+  </div>
+</li>
+
+<li><a href="#how">So funktioniert's</a></li>
+<li><a href="#pricing">Preise</a></li>
+<li><a href="#testimonials">Kundenstimmen</a></li>
+
+<!-- Dropdown: Ressourcen -->
+<li class="nav-dropdown">
+  <a href="#" class="dropdown-trigger">
+    Ressourcen
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+      <path d="M2 4l4 4 4-4"/>
+    </svg>
+  </a>
+  <div class="dropdown-menu">
+    <a href="#" class="dropdown-item">
+      <span class="dropdown-icon">📖</span>
+      <div>
+        <strong>Blog</strong>
+        <small>HR-Tipps & Trends</small>
+      </div>
+    </a>
+    <a href="#" class="dropdown-item">
+      <span class="dropdown-icon">🎓</span>
+      <div>
+        <strong>Webinare</strong>
+        <small>Live & On-Demand</small>
+      </div>
+    </a>
+    <a href="#" class="dropdown-item">
+      <span class="dropdown-icon">📋</span>
+      <div>
+        <strong>Vorlagen</strong>
+        <small>Kostenlose HR-Templates</small>
+      </div>
+    </a>
+    <a href="#" class="dropdown-item">
+      <span class="dropdown-icon">💬</span>
+      <div>
+        <strong>Support</strong>
+        <small>Hilfe & Dokumentation</small>
+      </div>
+    </a>
+  </div>
+</li>
+```
+
+  </ul>
+
+  <!-- CTA Buttons -->
+
+  <div class="nav-actions">
+    <a href="#login" class="btn-ghost">Anmelden</a>
+    <a href="#start" class="btn-primary">
+      Kostenlos starten
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+        <path d="M1 7h12M8 3l5 4-5 4"/>
+      </svg>
+    </a>
+  </div>
+</nav>
+
+<!-- ==================== CSS ==================== -->
+
+<style>
+/* ---- CSS Variablen (passen zu deinem bestehenden Design) ---- */
+:root {
+  --bg:        #0a0a0f;
+  --surface:   #12121a;
+  --surface2:  #1a1a26;
+  --accent:    #6c63ff;
+  --accent2:   #ff6b9d;
+  --accent3:   #00d4aa;
+  --text:      #f0f0f8;
+  --muted:     #8888aa;
+  --border:    rgba(108, 99, 255, 0.2);
 }
+
+/* ---- Reset ---- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ---- NAVBAR ---- */
+#navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5%;
+  height: 68px;
+  background: rgba(10, 10, 15, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+#navbar.scrolled {
+  background: rgba(10, 10, 15, 0.97);
+  box-shadow: 0 4px 30px rgba(108, 99, 255, 0.15);
+}
+
+/* ---- LOGO ---- */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-family: Georgia, serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--text);
+  letter-spacing: -0.5px;
+  flex-shrink: 0;
+}
+.nav-logo .dot { color: var(--accent2); }
+.nav-logo svg { flex-shrink: 0; }
+
+/* ---- NAV LINKS ---- */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  list-style: none;
+}
+
+.nav-links > li > a,
+.nav-links > li > .dropdown-trigger {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 14px;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: color 0.2s, background 0.2s;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.nav-links > li > a:hover,
+.nav-links > li > .dropdown-trigger:hover {
+  color: var(--text);
+  background: rgba(255,255,255,0.05);
+}
+
+.nav-links > li > a.active {
+  color: var(--accent);
+}
+
+/* Chevron rotation */
+.dropdown-trigger svg {
+  transition: transform 0.25s ease;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.nav-dropdown.open .dropdown-trigger svg {
+  transform: rotate(180deg);
+}
+
+/* ---- DROPDOWN ---- */
+.nav-dropdown { position: relative; }
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  min-width: 240px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 8px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(108,99,255,0.1);
+}
+
+.nav-dropdown.open .dropdown-menu {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateX(-50%) translateY(0);
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--text);
+  transition: background 0.15s;
+}
+.dropdown-item:hover { background: var(--surface2); }
+
+.dropdown-icon {
+  font-size: 1.3rem;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface2);
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.dropdown-item strong {
+  display: block;
+  font-size: 0.88rem;
+  color: var(--text);
+  font-weight: 600;
+}
+.dropdown-item small {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-top: 1px;
+}
+
+.dropdown-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 6px 8px;
+}
+
+.dropdown-cta {
+  font-size: 0.85rem;
+  color: var(--accent) !important;
+  font-weight: 600;
+  justify-content: center;
+  padding: 10px;
+}
+.dropdown-cta:hover { background: rgba(108,99,255,0.1) !important; }
+
+/* ---- CTA BUTTONS ---- */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.btn-ghost {
+  padding: 8px 18px;
+  border-radius: 8px;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: 1px solid var(--border);
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+.btn-ghost:hover {
+  color: var(--text);
+  border-color: rgba(108,99,255,0.5);
+  background: rgba(108,99,255,0.08);
+}
+
+.btn-primary {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 20px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--accent), #8b5cf6);
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+  box-shadow: 0 4px 20px rgba(108,99,255,0.4);
+}
+.btn-primary svg {
+  stroke: white;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  transition: transform 0.2s;
+}
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 28px rgba(108,99,255,0.55);
+  opacity: 0.95;
+}
+.btn-primary:hover svg { transform: translateX(3px); }
+
+/* ---- HAMBURGER (Mobile) ---- */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 8px;
+}
+.nav-hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ---- MOBILE ---- */
+@media (max-width: 900px) {
+  .nav-hamburger { display: flex; }
+  .nav-actions { display: none; }
+
+  .nav-links {
+    position: fixed;
+    top: 68px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 16px 20px;
+    transform: translateY(-10px);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  .nav-links.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .nav-links > li > a,
+  .nav-links > li > .dropdown-trigger {
+    padding: 12px 16px;
+    font-size: 1rem;
+    border-radius: 10px;
+  }
+
+  .dropdown-menu {
+    position: static;
+    transform: none;
+    opacity: 1;
+    pointer-events: all;
+    box-shadow: none;
+    border: none;
+    background: var(--surface2);
+    border-radius: 10px;
+    margin: 4px 0 8px 0;
+    display: none;
+  }
+  .nav-dropdown.open .dropdown-menu {
+    display: block;
+    transform: none;
+  }
+
+  /* Mobile CTA am Ende -->  */
+  .nav-links::after {
+    content: '';
+  }
+}
+
+/* Padding damit Content nicht unter Navbar versteckt ist */
+body { padding-top: 68px; }
+</style>
+
+<!-- ==================== JS ==================== -->
+
+<script>
+(function() {
+  const navbar     = document.getElementById('navbar');
+  const hamburger  = document.getElementById('hamburger');
+  const navLinks   = document.getElementById('navLinks');
+  const dropdowns  = document.querySelectorAll('.nav-dropdown');
+
+  // Scroll: Navbar Hintergrund dunkler machen
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Hamburger Toggle (Mobile)
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+
+  // Dropdown Toggle
+  dropdowns.forEach(dropdown => {
+    const trigger = dropdown.querySelector('.dropdown-trigger');
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      const isOpen = dropdown.classList.contains('open');
+      // Alle anderen schließen
+      dropdowns.forEach(d => d.classList.remove('open'));
+      if (!isOpen) dropdown.classList.add('open');
+    });
+  });
+
+  // Klick außerhalb schließt Dropdowns
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.nav-dropdown')) {
+      dropdowns.forEach(d => d.classList.remove('open'));
+    }
+  });
+
+  // Aktiven Link markieren beim Scrollen
+  const sections = document.querySelectorAll('section[id]');
+  const links    = document.querySelectorAll('.nav-links a[href^="#"]');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      if (window.scrollY >= section.offsetTop - 100) {
+        current = section.getAttribute('id');
+      }
+    });
+    links.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === '#' + current) {
+        link.classList.add('active');
+      }
+    });
+  });
+})();
+</script>
 
 /* ── NAV ── */
 nav {
