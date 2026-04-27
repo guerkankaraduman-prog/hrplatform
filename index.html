@@ -38,37 +38,40 @@ nav {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 100;
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 48px;
+  padding: 0 32px;
   height: 64px;
-  background: rgba(248,248,246,0.85);
+  background: rgba(248,248,246,0.92);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
 }
 
 .nav-logo {
   font-family: 'Instrument Serif', serif;
-  font-size: 1.35rem;
+  font-size: 1.3rem;
   color: var(--ink);
   letter-spacing: -0.01em;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 36px;
+  justify-content: center;
+  gap: 28px;
   list-style: none;
 }
 
 .nav-links a {
   text-decoration: none;
-  font-size: 0.875rem;
+  font-size: 0.85rem;
   font-weight: 500;
   color: var(--ink-soft);
   transition: color 0.2s;
+  white-space: nowrap;
 }
 
 .nav-links a:hover { color: var(--ink); }
@@ -76,17 +79,19 @@ nav {
 .nav-cta {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+  justify-content: flex-end;
 }
 
 .btn-ghost {
-  font-size: 0.875rem;
+  font-size: 0.85rem;
   font-weight: 500;
   color: var(--ink-soft);
   background: none;
   border: none;
   cursor: pointer;
   text-decoration: none;
+  white-space: nowrap;
   transition: color 0.2s;
 }
 .btn-ghost:hover { color: var(--ink); }
@@ -97,13 +102,14 @@ nav {
   gap: 6px;
   background: var(--blue);
   color: #fff;
-  font-size: 0.875rem;
+  font-size: 0.85rem;
   font-weight: 600;
-  padding: 10px 20px;
+  padding: 9px 18px;
   border-radius: 8px;
   border: none;
   cursor: pointer;
   text-decoration: none;
+  white-space: nowrap;
   transition: background 0.2s, transform 0.15s;
 }
 .btn-primary:hover { background: var(--blue-dark); transform: translateY(-1px); }
@@ -194,12 +200,13 @@ nav {
   margin-top: 40px;
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
   flex-wrap: wrap;
   justify-content: center;
   opacity: 0;
   animation: fadeUp 0.7s 0.45s forwards;
 }
+.hero-actions a { white-space: nowrap; }
 
 .btn-outline {
   display: inline-flex;
@@ -856,5 +863,4 @@ footer {
   </footer>
 
 </body>
-</html>
 </html>
