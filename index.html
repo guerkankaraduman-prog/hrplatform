@@ -1,809 +1,864 @@
+<html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pelio. – Die Moderne HR Plattform</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #0a0a0f;
-    --surface: #12121a;
-    --surface2: #1a1a26;
-    --accent: #6c63ff;
-    --accent2: #ff6b9d;
-    --accent3: #00d4aa;
-    --text: #f0f0f8;
-    --muted: #8888aa;
-    --border: rgba(255,255,255,0.07);
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pelio. – Die Moderne HR Plattform</title>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-{ margin: 0; padding: 0; box-sizing: border-box; }
+
+root {
+  --blue: #3B5BDB;
+  --blue-light: #4C6EF5;
+  --blue-dark: #2F4AC0;
+  --ink: #0F1117;
+  --ink-soft: #3D4050;
+  --muted: #8B90A0;
+  --bg: #F8F8F6;
+  --white: #FFFFFF;
+  --border: #E4E4E0;
+  --badge-bg: #EEF2FF;
+  --badge-text: #3B5BDB;
+}
+
 html { scroll-behavior: smooth; }
-font-family: 'DM Sans', sans-serif;
-background: var(--bg);
-      
-color: var(--text);
-overflow-x: hidden;
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  overflow-x: hidden;
 }
 
 /* ── NAV ── */
-nav, navbar {
-  flex-wrap: nowrap;
-  position: sticky;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  z-index: 1000;
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  padding: 0 32px;
+  height: 64px;
+  background: rgba(248,248,246,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.3rem;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.nav-links {
   display: flex;
   align-items: center;
-  justify-content: space-between; align-items: center;
-  padding: 0.8rem 3%;
-  background: rgba(10,10,15,0.85);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
-  box-sizing: border-box;
-}
-  
-body {
-font-family: 'DM Sans', sans-serif;
-background: var(--bg);
-color: var(--text);
-overflow-x: hidden;
+  justify-content: center;
+  gap: 28px;
+  list-style: none;
 }
 
-.logo { 
-display: flex; align-items: center;
+.nav-links a {
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+  transition: color 0.2s;
+  white-space: nowrap;
 }
-.logo img { 
-height: 40px; width: auto; display: block;
-}
-  
-.nav-links { display: flex; gap: 3.0rem; list-style: none; flex: 1; justify-content: center;}
-.nav-links a { color: var(--muted); text-decoration: none; font-size: 1.0rem; font-weight: 500; transition: color 0.2s; }
-.nav-links a:hover { color: var(--text); }
+
+.nav-links a:hover { color: var(--ink); }
 
 .nav-cta {
-  background: var(--accent);
-  color: #fff;
-  border: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: flex-end;
+}
 
-  padding: 0.65rem 1.5rem;
-  border-radius: 50px;
-
-  font-size: 0.8rem;
+.btn-ghost {
+  font-size: 0.85rem;
   font-weight: 500;
+  color: var(--ink-soft);
+  background: none;
+  border: none;
   cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+.btn-ghost:hover { color: var(--ink); }
 
-  transition: all 0.2s ease;
-
+.btn-primary {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  gap: 6px;
+  background: var(--blue);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 9px 18px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
   white-space: nowrap;
-
-  line-height: 1;
+  transition: background 0.2s, transform 0.15s;
 }
+.btn-primary:hover { background: var(--blue-dark); transform: translateY(-1px); }
 
-.nav-cta:hover {
-  background: #7d75ff;
-  transform: translateY(-1px);
-}
-.nav-right { flex-shrink: 0; white-space: nowrap; margin-left: auto; display: flex; align-items: center; gap: 10px;}
-  
 /* ── HERO ── */
 .hero {
-min-height: 100vh;
-display: flex; flex-direction: column;
-align-items: center; justify-content: center;
-text-align: center;
-padding: 8rem 5% 4rem;
-position: relative; overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 24px 80px;
+  position: relative;
+  overflow: hidden;
 }
 
+/* Subtle grid background */
 .hero::before {
-content: '';
-position: absolute; inset: 0;
-background:
-radial-gradient(ellipse 80% 60% at 50% 0%, rgba(108,99,255,0.15) 0%, transparent 70%),
-radial-gradient(ellipse 50% 40% at 80% 80%, rgba(255,107,157,0.1) 0%, transparent 60%),
-radial-gradient(ellipse 40% 40% at 20% 60%, rgba(0,212,170,0.08) 0%, transparent 60%);
-pointer-events: none;
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Soft glow */
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 20%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(59,91,219,0.08) 0%, transparent 70%);
+  pointer-events: none;
 }
 
 .hero-badge {
-display: inline-flex; align-items: center; gap: 0.5rem;
-background: rgba(108,99,255,0.15); border: 1px solid rgba(108,99,255,0.3);
-border-radius: 50px; padding: 0.4rem 1rem;
-font-size: 0.8rem; color: #a09bff; margin-bottom: 2rem;
-animation: fadeUp 0.6s ease both;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--badge-bg);
+  color: var(--badge-text);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 5px 14px;
+  border-radius: 100px;
+  border: 1px solid rgba(59,91,219,0.2);
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fadeUp 0.6s 0.1s forwards;
 }
 
-.hero-badge span { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; display: inline-block; animation: pulse 2s infinite; }
+.hero-badge span { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }
 
-@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.3)} }
-@keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
-
-.hero h1 {
-font-family: 'Syne', sans-serif;
-font-size: clamp(2.8rem, 7vw, 5.5rem);
-font-weight: 800; line-height: 1.05;
-margin-bottom: 1.5rem;
-animation: fadeUp 0.6s 0.1s ease both;
+.hero-headline {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(3rem, 7vw, 6rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  max-width: 820px;
+  opacity: 0;
+  animation: fadeUp 0.7s 0.2s forwards;
 }
 
-.hero h1 em {
-font-style: normal;
-background: linear-gradient(135deg, var(--accent), var(--accent2));
--webkit-background-clip: text; -webkit-text-fill-color: transparent;
+.hero-headline em {
+  font-style: italic;
+  color: var(--blue);
 }
 
-.hero p {
-font-size: 1.2rem; color: var(--muted); max-width: 560px;
-line-height: 1.7; margin-bottom: 2.5rem;
-animation: fadeUp 0.6s 0.2s ease both;
+.hero-sub {
+  margin-top: 24px;
+  font-size: 1.05rem;
+  color: var(--ink-soft);
+  max-width: 480px;
+  line-height: 1.65;
+  font-weight: 400;
+  opacity: 0;
+  animation: fadeUp 0.7s 0.35s forwards;
 }
 
 .hero-actions {
-display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
-animation: fadeUp 0.6s 0.3s ease both;
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  opacity: 0;
+  animation: fadeUp 0.7s 0.45s forwards;
+}
+.hero-actions a { white-space: nowrap; }
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--white);
+  color: var(--ink);
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color 0.2s, transform 0.15s;
+}
+.btn-outline:hover { border-color: #aaa; transform: translateY(-1px); }
+
+.hero-trust {
+  margin-top: 64px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: var(--muted);
+  opacity: 0;
+  animation: fadeUp 0.7s 0.6s forwards;
 }
 
-.btn-primary {
-background: linear-gradient(135deg, var(--accent), #8b84ff);
-color: #fff; border: none; padding: 0.9rem 2rem;
-border-radius: 50px; font-size: 1rem; font-weight: 500;
-cursor: pointer; font-family: 'DM Sans', sans-serif;
-transition: all 0.2s; box-shadow: 0 8px 30px rgba(108,99,255,0.3);
+.avatars {
+  display: flex;
 }
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(108,99,255,0.4); }
-
-.btn-secondary {
-background: transparent; color: var(--text);
-border: 1px solid var(--border); padding: 0.9rem 2rem;
-border-radius: 50px; font-size: 1rem; font-weight: 500;
-cursor: pointer; font-family: 'DM Sans', sans-serif;
-transition: all 0.2s;
-}
-.btn-secondary:hover { border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.05); }
-
-.hero-stats {
-display: flex; gap: 3rem; margin-top: 4rem;
-animation: fadeUp 0.6s 0.4s ease both;
-}
-
-.stat { text-align: center; }
-.stat-num { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; color: var(--text); }
-.stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 0.2rem; }
-
-/* ── DASHBOARD MOCKUP ── */
-.dashboard-section {
-padding: 4rem 5% 6rem;
-display: flex; justify-content: center;
-}
-
-.dashboard-mock {
-width: 100%; max-width: 900px;
-background: var(--surface);
-border: 1px solid var(--border);
-border-radius: 20px;
-overflow: hidden;
-box-shadow: 0 40px 100px rgba(0,0,0,0.5);
-animation: fadeUp 0.8s 0.5s ease both;
-}
-
-.dash-topbar {
-background: var(--surface2);
-padding: 1rem 1.5rem;
-display: flex; align-items: center; gap: 0.5rem;
-border-bottom: 1px solid var(--border);
-}
-
-.dot { width: 12px; height: 12px; border-radius: 50%; }
-.dot-r { background: #ff5f57; }
-.dot-y { background: #febc2e; }
-.dot-g { background: #28c840; }
-
-.dash-url {
-margin-left: 1rem; background: rgba(255,255,255,0.05);
-border-radius: 6px; padding: 0.3rem 1rem;
-font-size: 0.75rem; color: var(--muted); flex: 1; max-width: 300px;
-}
-
-.dash- { display: flex; }
-
-.dash-sidebar {
-width: 200px; background: var(--surface2);
-border-right: 1px solid var(--border);
-padding: 1.5rem 0;
-flex-shrink: 0;
-}
-
-.dash-logo {
-font-family: 'Syne', sans-serif; font-weight: 800;
-font-size: 1rem; padding: 0 1.5rem 1.5rem;
-background: linear-gradient(135deg, var(--accent), var(--accent2));
--webkit-background-clip: text; -webkit-text-fill-color: transparent;
-}
-
-.dash-nav-item {
-padding: 0.6rem 1.5rem;
-font-size: 0.8rem; color: var(--muted);
-display: flex; align-items: center; gap: 0.7rem;
-cursor: pointer; transition: all 0.15s;
-}
-.dash-nav-item:hover, .dash-nav-item.active { color: var(--text); background: rgba(108,99,255,0.1); }
-.dash-nav-item.active { border-left: 2px solid var(--accent); }
-.dash-nav-icon { font-size: 1rem; }
-
-.dash-main { flex: 1; padding: 1.5rem; overflow: hidden; }
-
-.dash-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 1rem; }
-
-.dash-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem; margin-bottom: 1.2rem; }
-
-.dash-card {
-background: var(--surface2); border: 1px solid var(--border);
-border-radius: 12px; padding: 1rem;
-}
-
-.dash-card-label { font-size: 0.7rem; color: var(--muted); margin-bottom: 0.3rem; }
-.dash-card-val { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.4rem; }
-.dash-card-val.green { color: var(--accent3); }
-.dash-card-val.purple { color: var(--accent); }
-.dash-card-val.pink { color: var(--accent2); }
-
-.dash-table { width: 100%; border-collapse: collapse; font-size: 0.75rem; }
-.dash-table th { text-align: left; color: var(--muted); font-weight: 500; padding: 0.5rem 0.7rem; border-bottom: 1px solid var(--border); }
-.dash-table td { padding: 0.6rem 0.7rem; border-bottom: 1px solid rgba(255,255,255,0.03); }
-
-.badge {
-display: inline-block; padding: 0.2rem 0.6rem;
-border-radius: 50px; font-size: 0.65rem; font-weight: 500;
-}
-.badge-green { background: rgba(0,212,170,0.15); color: var(--accent3); }
-.badge-yellow { background: rgba(254,188,46,0.15); color: #febc2e; }
-.badge-purple { background: rgba(108,99,255,0.15); color: #a09bff; }
-
 .avatar {
-width: 24px; height: 24px; border-radius: 50%;
-display: inline-flex; align-items: center; justify-content: center;
-font-size: 0.65rem; font-weight: 700; margin-right: 0.5rem;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  border: 2px solid var(--bg);
+  margin-left: -8px;
+  font-size: 0.65rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: #fff;
 }
+.avatar:first-child { margin-left: 0; }
+.a1 { background: #845EF7; }
+.a2 { background: #339AF0; }
+.a3 { background: #51CF66; }
+.a4 { background: #FF6B6B; }
 
 /* ── FEATURES ── */
-.features {
-padding: 6rem 5%;
-position: relative;
+.section {
+  padding: 100px 48px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .section-label {
-font-size: 0.8rem; color: var(--accent); font-weight: 500;
-letter-spacing: 0.1em; text-transform: uppercase;
-margin-bottom: 1rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 12px;
 }
 
 .section-title {
-font-family: 'Syne', sans-serif; font-weight: 800;
-font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1;
-margin-bottom: 1rem;
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  max-width: 560px;
 }
 
-.section-sub { color: var(--muted); font-size: 1.1rem; max-width: 500px; line-height: 1.7; }
+.section-title em { font-style: italic; color: var(--blue); }
 
 .features-grid {
-display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-gap: 1.5rem; margin-top: 4rem;
+  margin-top: 64px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
 }
 
 .feature-card {
-background: var(--surface);
-border: 1px solid var(--border);
-border-radius: 20px; padding: 2rem;
-transition: all 0.3s;
-position: relative; overflow: hidden;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.feature-card::before {
-content: ''; position: absolute;
-top: 0; left: 0; right: 0; height: 1px;
-background: linear-gradient(90deg, transparent, var(--accent), transparent);
-opacity: 0; transition: opacity 0.3s;
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.07);
 }
-
-.feature-card:hover { transform: translateY(-4px); border-color: rgba(108,99,255,0.3); }
-.feature-card:hover::before { opacity: 1; }
 
 .feature-icon {
-width: 48px; height: 48px; border-radius: 14px;
-display: flex; align-items: center; justify-content: center;
-font-size: 1.4rem; margin-bottom: 1.2rem;
+  width: 44px; height: 44px;
+  background: var(--badge-bg);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  margin-bottom: 20px;
 }
 
-.icon-purple { background: rgba(108,99,255,0.15); }
-.icon-pink { background: rgba(255,107,157,0.15); }
-.icon-green { background: rgba(0,212,170,0.15); }
-.icon-yellow { background: rgba(254,188,46,0.15); }
-.icon-blue { background: rgba(64,154,255,0.15); }
-.icon-orange { background: rgba(255,140,66,0.15); }
+.feature-title {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
 
-.feature-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 0.7rem; }
-.feature-desc { color: var(--muted); font-size: 0.9rem; line-height: 1.7; }
+.feature-desc {
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
 
 /* ── HOW IT WORKS ── */
-.how {
-padding: 6rem 5%;
-background: var(--surface);
-border-top: 1px solid var(--border);
-border-bottom: 1px solid var(--border);
+.how-section {
+  background: var(--white);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
 
-.how-inner { max-width: 900px; margin: 0 auto; }
-
-.steps { display: flex; flex-direction: column; gap: 2rem; margin-top: 4rem; }
+.steps {
+  margin-top: 64px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+}
 
 .step {
-display: flex; gap: 2rem; align-items: flex-start;
-padding: 2rem; background: var(--bg);
-border: 1px solid var(--border); border-radius: 20px;
-transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
-.step:hover { border-color: rgba(108,99,255,0.3); }
 
 .step-num {
-font-family: 'Syne', sans-serif; font-weight: 800;
-font-size: 2.5rem; color: rgba(108,99,255,0.3);
-flex-shrink: 0; line-height: 1;
+  font-family: 'Instrument Serif', serif;
+  font-size: 3rem;
+  color: var(--border);
+  line-height: 1;
 }
 
-.step-content h3 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.15rem; margin-bottom: 0.5rem; }
-.step-content p { color: var(--muted); line-height: 1.7; font-size: 0.95rem; }
+.step-title {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.step-desc {
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
 
 /* ── PRICING ── */
-.pricing { padding: 6rem 5%; text-align: center; }
-
 .pricing-grid {
-display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-gap: 1.5rem; margin-top: 4rem; max-width: 960px; margin-inline: auto;
-margin-top: 4rem;
+  margin-top: 64px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: start;
 }
 
 .pricing-card {
-background: var(--surface); border: 1px solid var(--border);
-border-radius: 24px; padding: 2.5rem 2rem;
-text-align: left; position: relative; transition: all 0.3s;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 36px;
+  position: relative;
 }
 
 .pricing-card.featured {
-border-color: var(--accent);
-background: linear-gradient(135deg, rgba(108,99,255,0.1), rgba(139,132,255,0.05));
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
 }
 
-.popular-badge {
-position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
-background: var(--accent); color: #fff;
-font-size: 0.7rem; font-weight: 600; padding: 0.3rem 1rem;
-border-radius: 50px; letter-spacing: 0.05em; text-transform: uppercase;
+.pricing-badge {
+  position: absolute;
+  top: -12px; left: 50%;
+  transform: translateX(-50%);
+  background: var(--blue);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 14px;
+  border-radius: 100px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
-.plan-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem; }
-.plan-price { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 2.8rem; margin: 1rem 0 0.3rem; }
-.plan-price span { font-size: 1rem; font-weight: 400; color: var(--muted); }
-.plan-desc { color: var(--muted); font-size: 0.85rem; margin-bottom: 1.5rem; }
-
-.plan-features { list-style: none; margin-bottom: 2rem; }
-.plan-features li {
-padding: 0.5rem 0; font-size: 0.9rem; color: var(--muted);
-display: flex; align-items: center; gap: 0.7rem;
-border-bottom: 1px solid var(--border);
+.pricing-tier {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 16px;
 }
-.plan-features li:last-child { border-bottom: none; }
-.plan-features li::before { content: '✓'; color: var(--accent3); font-weight: 700; flex-shrink: 0; }
 
-.btn-plan {
-width: 100%; padding: 0.9rem; border-radius: 50px;
-font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 500;
-cursor: pointer; transition: all 0.2s;
+.pricing-card.featured .pricing-tier { color: rgba(255,255,255,0.5); }
+
+.pricing-price {
+  font-family: 'Instrument Serif', serif;
+  font-size: 3rem;
+  line-height: 1;
+  letter-spacing: -0.03em;
 }
-.btn-plan-outline { background: transparent; border: 1px solid var(--border); color: var(--text); }
-.btn-plan-outline:hover { border-color: var(--accent); color: var(--accent); }
-.btn-plan-fill { background: var(--accent); border: none; color: #fff; box-shadow: 0 8px 30px rgba(108,99,255,0.3); }
-.btn-plan-fill:hover { background: #7d75ff; transform: translateY(-2px); }
+
+.pricing-price sup {
+  font-size: 1.2rem;
+  vertical-align: super;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+}
+
+.pricing-per {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 4px;
+}
+.pricing-card.featured .pricing-per { color: rgba(255,255,255,0.5); }
+
+.pricing-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 24px 0;
+}
+.pricing-card.featured .pricing-divider { background: rgba(255,255,255,0.15); }
+
+.pricing-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.pricing-features li {
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pricing-features li::before {
+  content: '✓';
+  font-weight: 700;
+  color: var(--blue);
+  font-size: 0.8rem;
+}
+.pricing-card.featured .pricing-features li::before { color: #74C0FC; }
+
+.btn-primary-dark {
+  display: inline-flex;
+  width: 100%;
+  justify-content: center;
+  background: var(--white);
+  color: var(--ink);
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.btn-primary-dark:hover { opacity: 0.85; }
 
 /* ── TESTIMONIALS ── */
-.testimonials {
-padding: 6rem 5%;
-background: var(--surface);
-border-top: 1px solid var(--border);
+.testimonials-grid {
+  margin-top: 64px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
 }
 
-.testi-grid {
-display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-gap: 1.5rem; margin-top: 4rem;
+.testimonial-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px;
 }
 
-.testi-card {
-background: var(--bg); border: 1px solid var(--border);
-border-radius: 20px; padding: 2rem; transition: all 0.3s;
+.stars {
+  color: #F59F00;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  margin-bottom: 14px;
 }
-.testi-card:hover { border-color: rgba(108,99,255,0.3); transform: translateY(-3px); }
 
-.testi-stars { color: #febc2e; font-size: 0.9rem; margin-bottom: 1rem; }
-.testi-text { color: var(--muted); line-height: 1.7; font-size: 0.9rem; margin-bottom: 1.5rem; font-style: italic; }
-
-.testi-author { display: flex; align-items: center; gap: 0.8rem; }
-.testi-avatar {
-width: 40px; height: 40px; border-radius: 50%;
-display: flex; align-items: center; justify-content: center;
-font-weight: 700; font-size: 0.9rem;
+.testimonial-text {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  line-height: 1.65;
+  margin-bottom: 20px;
 }
-.testi-name { font-weight: 600; font-size: 0.9rem; }
-.testi-role { font-size: 0.75rem; color: var(--muted); }
 
-/* ── CTA ── */
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.author-avatar {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.author-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.author-role {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+/* ── CTA SECTION ── */
 .cta-section {
-padding: 8rem 5%; text-align: center;
-position: relative; overflow: hidden;
+  background: var(--ink);
+  color: #fff;
+  text-align: center;
+  padding: 100px 48px;
 }
 
-.cta-section::before {
-content: ''; position: absolute; inset: 0;
-background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(108,99,255,0.12), transparent 70%);
-pointer-events: none;
+.cta-section .section-label { color: rgba(255,255,255,0.4); }
+
+.cta-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  max-width: 620px;
+  margin: 0 auto 32px;
 }
 
-.cta-section h2 {
-font-family: 'Syne', sans-serif; font-weight: 800;
-font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.1;
-margin-bottom: 1.5rem;
+.cta-title em { font-style: italic; color: #74C0FC; }
+
+.cta-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
-.cta-section p { color: var(--muted); font-size: 1.1rem; max-width: 480px; margin: 0 auto 2.5rem; line-height: 1.7; }
+.btn-white {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #fff;
+  color: var(--ink);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 12px 28px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.15s;
+}
+.btn-white:hover { opacity: 0.9; transform: translateY(-1px); }
+
+.btn-ghost-white {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  color: rgba(255,255,255,0.7);
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 12px 28px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.2);
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-ghost-white:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
 
 /* ── FOOTER ── */
 footer {
-border-top: 1px solid var(--border);
-padding: 3rem 5%;
-display: flex; justify-content: ; align-items: center;
-flex-wrap: wrap; gap: 1rem;
+  background: var(--ink);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 40px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .footer-logo {
-font-family: 'Syne', sans-serif; font-weight: 800;
-background: linear-gradient(135deg, var(--accent), var(--accent2));
--webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.1rem;
+  color: #fff;
+  text-decoration: none;
 }
 
-.footer-links { display: flex; gap: 2rem; flex-wrap: wrap; }
-.footer-links a { color: var(--muted); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
-.footer-links a:hover { color: var(--text); }
-
-.footer-copy { color: var(--muted); font-size: 0.8rem; }
+.footer-copy {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.35);
+}
 
 /* ── ANIMATIONS ── */
-.fade-in { opacity: 0; transform: translateY(30px); transition: all 0.7s ease; }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
-</style>
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 0 24px; }
+  .nav-links { display: none; }
+  .section { padding: 64px 24px; }
+  .features-grid,
+  .steps,
+  .pricing-grid,
+  .testimonials-grid { grid-template-columns: 1fr; }
+  footer { flex-direction: column; gap: 16px; text-align: center; }
+}
+```
+
+  </style>
 </head>
-<body style="background-color:#0a0a0f!important;background:#0a0a0f!important">
+<body>
 
-<nav class="navbar">
+  <!-- NAV -->
 
-<!-- LEFT: LOGO -->
-<div class="logo">
-  <img src="https://raw.githubusercontent.com/guerkankaraduman-prog/hrplatform/main/logo001.png" alt="logo001.png" style="height: 100px">
-  <span style="font-size: 1.5rem; font-weight: 700; color: #7B4FFF; margin-left: 8px;">|  Pelio.</span>
-</div>
-
-<!-- CENTER: LINKS -->
-<ul class="nav-links">
-  <li><a href="#features">Funktionen</a></li>
-  <li><a href="#how">So funktioniert's</a></li>
-  <li><a href="#pricing">Preise</a></li>
-  <li><a href="#testimonials">Stimmen</
-
-</ul>
-
-<!-- RIGHT: CTA -->
-<div class="nav-right">
-  <a href="https://nexus-hr-app-z47w.vercel.app" class="btn-ghost">Login</a>
-  <button class="nav-cta">Kostenlos starten</button>
-</div>
-
-</nav>
-
-
-<!-- HERO -->
-
-<section class="hero">
-  <div class="hero-badge"><span></span> Neu: KI-gestützte Urlaubsplanung</div>
-  <h1>HR-Management,<br><em>neu gedacht.</em></h1>
-  <p>Pelio. vereint alles, was dein HR-Team braucht – von der Einstellung bis zur Gehaltsabrechnung – in einer modernen, intuitiven Plattform.</p>
-  <div class="hero-actions">
-    <button class="btn-primary">Jetzt kostenlos testen</button>
-    <button class="btn-secondary">Demo ansehen →</button>
-  </div>
-  <div class="hero-stats">
-    <div class="stat"><div class="stat-num">2.400+</div><div class="stat-label">Unternehmen vertrauen uns</div></div>
-    <div class="stat"><div class="stat-num">98%</div><div class="stat-label">Kundenzufriedenheit</div></div>
-    <div class="stat"><div class="stat-num">4 Min</div><div class="stat-label">Ø Einarbeitungszeit</div></div>
-  </div>
-</section>
-
-<!-- DASHBOARD MOCKUP -->
-
-<section class="dashboard-section">
-  <div class="dashboard-mock">
-    <div class="dash-topbar">
-      <div class="dot dot-r"></div>
-      <div class="dot dot-y"></div>
-      <div class="dot dot-g"></div>
-      <div class="dash-url">app.Pelio..de/dashboard</div>
+  <nav>
+    <a href="#" class="nav-logo">PeopleCore</a>
+    <ul class="nav-links">
+      <li><a href="#funktionen">Funktionen</a></li>
+      <li><a href="#so-funktionierts">So funktioniert's</a></li>
+      <li><a href="#preise">Preise</a></li>
+      <li><a href="#kundenstimmen">Kundenstimmen</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#" class="btn-ghost">Anmelden</a>
+      <a href="#" class="btn-primary">Kostenlos starten</a>
     </div>
-    <div class="dash-body">
-      <div class="dash-sidebar">
-        <div class="dash-logo">Pelio.</div>
-        <div class="dash-nav-item active"><span class="dash-nav-icon">📊</span> Dashboard</div>
-        <div class="dash-nav-item"><span class="dash-nav-icon">👥</span> Mitarbeiter</div>
-        <div class="dash-nav-item"><span class="dash-nav-icon">🌴</span> Urlaubsanträge</div>
-        <div class="dash-nav-item"><span class="dash-nav-icon">💰</span> Gehaltsabrechnung</div>
-        <div class="dash-nav-item"><span class="dash-nav-icon">🚀</span> Onboarding</div>
-        <div class="dash-nav-item"><span class="dash-nav-icon">📋</span> Berichte</div>
-        <div class="dash-nav-item"><span class="dash-nav-icon">⚙️</span> Einstellungen</div>
-      </div>
-      <div class="dash-main">
-        <div class="dash-title">Guten Morgen, Sarah 👋</div>
-        <div class="dash-cards">
-          <div class="dash-card">
-            <div class="dash-card-label">Mitarbeiter gesamt</div>
-            <div class="dash-card-val purple">142</div>
-          </div>
-          <div class="dash-card">
-            <div class="dash-card-label">Offene Urlaubsanträge</div>
-            <div class="dash-card-val green">7</div>
-          </div>
-          <div class="dash-card">
-            <div class="dash-card-label">Neue Bewerbungen</div>
-            <div class="dash-card-val pink">23</div>
-          </div>
-        </div>
-        <table class="dash-table">
-          <thead>
-            <tr>
-              <th>Mitarbeiter</th>
-              <th>Abteilung</th>
-              <th>Status</th>
-              <th>Urlaubstage</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><span class="avatar" style="background:rgba(108,99,255,0.2);color:#a09bff">MK</span>Max Kellner</td>
-              <td>Entwicklung</td>
-              <td><span class="badge badge-green">Aktiv</span></td>
-              <td>18 / 28</td>
-            </tr>
-            <tr>
-              <td><span class="avatar" style="background:rgba(255,107,157,0.2);color:#ff6b9d">LS</span>Laura Schmidt</td>
-              <td>Marketing</td>
-              <td><span class="badge badge-yellow">Im Urlaub</span></td>
-              <td>24 / 28</td>
-            </tr>
-            <tr>
-              <td><span class="avatar" style="background:rgba(0,212,170,0.2);color:#00d4aa">TM</span>Tom Müller</td>
-              <td>Vertrieb</td>
-              <td><span class="badge badge-green">Aktiv</span></td>
-              <td>12 / 28</td>
-            </tr>
-            <tr>
-              <td><span class="avatar" style="background:rgba(254,188,46,0.2);color:#febc2e">AW</span>Anna Weber</td>
-              <td>HR</td>
-              <td><span class="badge badge-purple">Onboarding</span></td>
-              <td>0 / 28</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+    <div class="hero-badge"><span></span> Neu: KI-gestützte Urlaubsplanung</div>
+    <h1 class="hero-headline">
+      HR-Management,<br><em>das wirklich funktioniert</em>
+    </h1>
+    <p class="hero-sub">
+      PeopleCore vereint alles, was dein HR-Team braucht – von der Einstellung bis zur Gehaltsabrechnung – in einer modernen, intuitiven Plattform.
+    </p>
+    <div class="hero-actions">
+      <a href="#" class="btn-primary">Kostenlos starten →</a>
+      <a href="#" class="btn-outline">Demo ansehen →</a>
     </div>
-  </div>
-</section>
+    <div class="hero-trust">
+      <div class="avatars">
+        <div class="avatar a1">MK</div>
+        <div class="avatar a2">SL</div>
+        <div class="avatar a3">AW</div>
+        <div class="avatar a4">TR</div>
+      </div>
+      &nbsp;Bereits von über 2.000 Teams genutzt
+    </div>
+  </section>
 
-<!-- FEATURES -->
+  <!-- FEATURES -->
 
-<section class="features" id="features">
-  <div class="fade-in">
+  <section class="section" id="funktionen">
     <div class="section-label">Funktionen</div>
-    <h2 class="section-title">Alles was du brauchst,<br>nichts was du nicht brauchst.</h2>
-    <p class="section-sub">Pelio. ist die HR-Plattform, die mit deinem Unternehmen wächst – von 5 bis 5.000 Mitarbeitern.</p>
-  </div>
-  <div class="features-grid fade-in">
-    <div class="feature-card">
-      <div class="feature-icon icon-purple">👥</div>
-      <div class="feature-title">Mitarbeiterverwaltung</div>
-      <div class="feature-desc">Alle Mitarbeiterdaten zentral verwalten. Profile, Dokumente, Verträge – alles an einem Ort und DSGVO-konform gespeichert.</div>
+    <h2 class="section-title">Alles, was dein HR-Team <em>wirklich braucht</em></h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">👥</div>
+        <div class="feature-title">Mitarbeiterverwaltung</div>
+        <p class="feature-desc">Alle Mitarbeiterdaten zentral, sicher und jederzeit abrufbar – inklusive Organigramm und Zugriffsrechten.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💰</div>
+        <div class="feature-title">Gehaltsabrechnung</div>
+        <p class="feature-desc">Automatisierte Abrechnungen, Steuerberechnung und DATEV-Export – in wenigen Klicks erledigt.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🏖️</div>
+        <div class="feature-title">KI-Urlaubsplanung</div>
+        <p class="feature-desc">Unsere KI erkennt Engpässe und schlägt optimale Urlaubszeiten vor – für reibungslose Abläufe.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📋</div>
+        <div class="feature-title">Recruiting & Onboarding</div>
+        <p class="feature-desc">Stellenausschreibungen, Bewerbermanagement und strukturiertes Onboarding – alles in einem Workflow.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <div class="feature-title">HR-Analytics</div>
+        <p class="feature-desc">Echtzeit-Dashboards zu Fluktuation, Fehlzeiten und Teamperformance – fundierte Entscheidungen statt Bauchgefühl.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔒</div>
+        <div class="feature-title">DSGVO-konform</div>
+        <p class="feature-desc">Hosting in Deutschland, Ende-zu-Ende-Verschlüsselung und revisionssichere Dokumentation.</p>
+      </div>
     </div>
-    <div class="feature-card">
-      <div class="feature-icon icon-green">🌴</div>
-      <div class="feature-title">Urlaubsverwaltung</div>
-      <div class="feature-desc">Urlaubsanträge digital stellen und genehmigen. Automatische Berechnung von Resturlaub und Überstunden inklusive.</div>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon icon-pink">💰</div>
-      <div class="feature-title">Gehaltsabrechnung</div>
-      <div class="feature-desc">Monatliche Gehaltsabrechnung automatisch erstellen. Lohnsteuer, Sozialabgaben und Sonderzahlungen werden automatisch berechnet.</div>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon icon-yellow">🚀</div>
-      <div class="feature-title">Onboarding</div>
-      <div class="feature-desc">Neue Mitarbeiter strukturiert einarbeiten. Checklisten, Aufgaben und Dokumente automatisch zuweisen – ab dem ersten Tag.</div>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon icon-blue">📊</div>
-      <div class="feature-title">HR-Analytics</div>
-      <div class="feature-desc">Datenbasierte Entscheidungen treffen. Fluktuationsrate, Krankenstand, Teamzufriedenheit – alles auf einen Blick.</div>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon icon-orange">🔒</div>
-      <div class="feature-title">DSGVO & Compliance</div>
-      <div class="feature-desc">Datenschutz ist keine Option, sondern Standard. Alle Daten werden verschlüsselt in deutschen Rechenzentren gespeichert.</div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- HOW IT WORKS -->
+  <!-- HOW IT WORKS -->
 
-<section class="how" id="how">
-  <div class="how-inner">
-    <div class="fade-in">
+  <div class="how-section">
+    <section class="section" id="so-funktionierts">
       <div class="section-label">So funktioniert's</div>
-      <h2 class="section-title">In 3 Schritten startklar.</h2>
-    </div>
-    <div class="steps fade-in">
-      <div class="step">
-        <div class="step-num">01</div>
-        <div class="step-content">
-          <h3>Konto erstellen & Team einladen</h3>
-          <p>Registriere dich kostenlos und lade dein HR-Team ein. Die Einrichtung dauert weniger als 5 Minuten – kein IT-Wissen erforderlich.</p>
+      <h2 class="section-title">In drei Schritten <em>startklar</em></h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-title">Account anlegen</div>
+          <p class="step-desc">Registriere dich kostenlos in unter zwei Minuten. Keine Kreditkarte nötig.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-title">Team importieren</div>
+          <p class="step-desc">Importiere deine Mitarbeiterdaten via CSV oder verbinde direkt dein bestehendes System.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-title">Loslegen</div>
+          <p class="step-desc">Dein HR-Team kann sofort starten – unterstützt von unserem Onboarding-Team.</p>
         </div>
       </div>
-      <div class="step">
-        <div class="step-num">02</div>
-        <div class="step-content">
-          <h3>Mitarbeiterdaten importieren</h3>
-          <p>Importiere bestehende Mitarbeiterdaten per CSV oder verbinde Pelio. mit deinem bestehenden System. Wir unterstützen alle gängigen Formate.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">03</div>
-        <div class="step-content">
-          <h3>Loslegen & Zeit sparen</h3>
-          <p>Ab sofort läuft dein HR auf Autopilot. Genehmigungen, Abrechnungen, Berichte – alles automatisiert. Dein Team spart durchschnittlich 8 Stunden pro Woche.</p>
-        </div>
-      </div>
-    </div>
+    </section>
   </div>
-</section>
 
-<!-- PRICING -->
+  <!-- PRICING -->
 
-<section class="pricing" id="pricing">
-  <div class="fade-in">
+  <section class="section" id="preise">
     <div class="section-label">Preise</div>
-    <h2 class="section-title">Transparent. Fair. Skalierbar.</h2>
-    <p class="section-sub" style="margin:0 auto">Keine versteckten Kosten. Jederzeit kündbar. Starte kostenlos und wachse mit uns.</p>
-  </div>
-  <div class="pricing-grid fade-in">
-    <div class="pricing-card">
-      <div class="plan-name">Starter</div>
-      <div class="plan-price">€0 <span>/ Monat</span></div>
-      <div class="plan-desc">Für kleine Teams bis 10 Mitarbeiter</div>
-      <ul class="plan-features">
-        <li>Bis zu 10 Mitarbeiter</li>
-        <li>Urlaubsverwaltung</li>
-        <li>Mitarbeiterprofile</li>
-        <li>E-Mail Support</li>
-      </ul>
-      <button class="btn-plan btn-plan-outline">Kostenlos starten</button>
-    </div>
-    <div class="pricing-card featured">
-      <div class="popular-badge">Beliebteste Wahl</div>
-      <div class="plan-name">Professional</div>
-      <div class="plan-price">€8 <span>/ Mitarbeiter / Monat</span></div>
-      <div class="plan-desc">Für wachsende Unternehmen</div>
-      <ul class="plan-features">
-        <li>Unbegrenzte Mitarbeiter</li>
-        <li>Gehaltsabrechnung</li>
-        <li>Onboarding-Workflows</li>
-        <li>HR-Analytics</li>
-        <li>Prioritäts-Support</li>
-      </ul>
-      <button class="btn-plan btn-plan-fill">14 Tage kostenlos testen</button>
-    </div>
-    <div class="pricing-card">
-      <div class="plan-name">Enterprise</div>
-      <div class="plan-price">Individuell</div>
-      <div class="plan-desc">Für große Unternehmen & Konzerne</div>
-      <ul class="plan-features">
-        <li>Alles aus Professional</li>
-        <li>Dedizierter Account Manager</li>
-        <li>Custom Integrationen</li>
-        <li>SLA-Garantie 99,9%</li>
-        <li>Schulungen & Onboarding</li>
-      </ul>
-      <button class="btn-plan btn-plan-outline">Kontakt aufnehmen</button>
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-
-<section class="testimonials" id="testimonials">
-  <div class="fade-in">
-    <div class="section-label">Kundenstimmen</div>
-    <h2 class="section-title">Was unsere Kunden sagen.</h2>
-  </div>
-  <div class="testi-grid fade-in">
-    <div class="testi-card">
-      <div class="testi-stars">★★★★★</div>
-      <div class="testi-text">"Pelio. hat unsere HR-Prozesse komplett transformiert. Wir sparen jetzt über 10 Stunden pro Woche bei der Lohnabrechnung allein."</div>
-      <div class="testi-author">
-        <div class="testi-avatar" style="background:rgba(108,99,255,0.2);color:#a09bff">SK</div>
-        <div><div class="testi-name">Sarah Krause</div><div class="testi-role">HR-Leiterin, TechCorp GmbH</div></div>
+    <h2 class="section-title">Transparent & <em>fair</em></h2>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="pricing-tier">Starter</div>
+        <div class="pricing-price"><sup>€</sup>0</div>
+        <div class="pricing-per">kostenlos, bis 10 Mitarbeiter</div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li>Bis zu 10 Mitarbeiter</li>
+          <li>Mitarbeiterverwaltung</li>
+          <li>Urlaubsanträge</li>
+          <li>E-Mail-Support</li>
+        </ul>
+        <a href="#" class="btn-primary" style="width:100%;justify-content:center;">Kostenlos starten</a>
+      </div>
+      <div class="pricing-card featured">
+        <div class="pricing-badge">Beliebt</div>
+        <div class="pricing-tier">Professional</div>
+        <div class="pricing-price"><sup>€</sup>12</div>
+        <div class="pricing-per">pro Mitarbeiter / Monat</div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li>Unbegrenzte Mitarbeiter</li>
+          <li>Gehaltsabrechnung</li>
+          <li>KI-Urlaubsplanung</li>
+          <li>HR-Analytics</li>
+          <li>Prioritäts-Support</li>
+        </ul>
+        <a href="#" class="btn-primary-dark">Jetzt starten</a>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-tier">Enterprise</div>
+        <div class="pricing-price" style="font-size:2.2rem;">Auf Anfrage</div>
+        <div class="pricing-per">individuelles Angebot</div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li>Alle Pro-Funktionen</li>
+          <li>Dedizierter Account Manager</li>
+          <li>SSO & API-Zugang</li>
+          <li>SLA-Garantie</li>
+          <li>Individuelle Integrationen</li>
+        </ul>
+        <a href="#" class="btn-primary" style="width:100%;justify-content:center;">Kontakt aufnehmen</a>
       </div>
     </div>
-    <div class="testi-card">
-      <div class="testi-stars">★★★★★</div>
-      <div class="testi-text">"Endlich eine HR-Software, die intuitiv ist. Unsere Mitarbeiter benutzen sie gerne – das war mit anderen Tools nie der Fall."</div>
-      <div class="testi-author">
-        <div class="testi-avatar" style="background:rgba(0,212,170,0.2);color:#00d4aa">MB</div>
-        <div><div class="testi-name">Markus Berger</div><div class="testi-role">CEO, Berger & Co.</div></div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+
+  <div class="how-section">
+    <section class="section" id="kundenstimmen">
+      <div class="section-label">Kundenstimmen</div>
+      <h2 class="section-title">Was unsere Kunden <em>sagen</em></h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"Endlich eine HR-Software, die unser Team wirklich nutzt. Onboarding war in einem Tag erledigt – absolut beeindruckend."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar" style="background:#845EF7">MK</div>
+            <div>
+              <div class="author-name">Maria K.</div>
+              <div class="author-role">HR-Leiterin, TechStart GmbH</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"Die KI-Urlaubsplanung hat uns wirklich geholfen. Keine Engpässe mehr im Sommer – das Team ist deutlich entspannter."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar" style="background:#339AF0">SL</div>
+            <div>
+              <div class="author-name">Stefan L.</div>
+              <div class="author-role">Geschäftsführer, Logistik AG</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"Gehaltsabrechnung in 10 Minuten statt 3 Stunden. Der ROI war nach dem ersten Monat schon spürbar."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar" style="background:#51CF66">AW</div>
+            <div>
+              <div class="author-name">Anna W.</div>
+              <div class="author-role">CFO, Retail Solutions</div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="testi-card">
-      <div class="testi-stars">★★★★★</div>
-      <div class="testi-text">"Der Onboarding-Prozess hat sich von 2 Wochen auf 3 Tage reduziert. Neue Mitarbeiter sind von Tag 1 an produktiv."</div>
-      <div class="testi-author">
-        <div class="testi-avatar" style="background:rgba(255,107,157,0.2);color:#ff6b9d">JW</div>
-        <div><div class="testi-name">Julia Wagner</div><div class="testi-role">People Manager, Startup Hub</div></div>
-      </div>
-    </div>
+    </section>
   </div>
-</section>
 
-<!-- CTA -->
+  <!-- CTA -->
 
-<section class="cta-section">
-  <div class="fade-in">
-    <h2>Bereit, HR neu zu<br><em style="font-style:normal;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent">denken?</em></h2>
-    <p>Starte kostenlos. Keine Kreditkarte erforderlich. Jederzeit kündbar.</p>
-    <div class="hero-actions" style="justify-content:center">
-      <button class="btn-primary">Kostenlos starten</button>
-      <button class="btn-secondary">Demo buchen →</button>
+  <section class="cta-section">
+    <div class="section-label">Jetzt loslegen</div>
+    <h2 class="cta-title">HR-Management, das dein Team <em>liebt</em></h2>
+    <div class="cta-actions">
+      <a href="#" class="btn-white">Kostenlos starten →</a>
+      <a href="#" class="btn-ghost-white">Demo ansehen</a>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- FOOTER -->
+  <!-- FOOTER -->
 
-<footer>
-  <div class="footer-logo">Pelio.</div>
-  <div class="footer-links">
-    <a href="#">Datenschutz</a>
-    <a href="#">Impressum</a>
-    <a href="#">AGB</a>
-    <a href="#">Kontakt</a>
-    <a href="#">Blog</a>
-  </div>
-  <div class="footer-copy">© 2026 Pelio. GmbH · Made in Germany 🇩🇪</div>
-</footer>
-
-<script>
-  // Scroll animations
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-</script>
+  <footer>
+    <a href="#" class="footer-logo">PeopleCore</a>
+    <span class="footer-copy">© 2026 PeopleCore. Alle Rechte vorbehalten.</span>
+  </footer>
 
 </body>
 </html>
